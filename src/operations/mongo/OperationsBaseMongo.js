@@ -1,5 +1,8 @@
+const BaseOperations = require('../BaseOperations');
+
 class OperationsBaseMongo extends BaseOperations {
     constructor(model) {
+        super(model);
         this.model = model;
     }
 
