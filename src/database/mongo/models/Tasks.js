@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {TO_DO} = require('../../../constants/KanbanStages');
 
 const TaskSchema = new mongoose.Schema({
     title: {
@@ -10,7 +11,8 @@ const TaskSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        required: true
+        required: true,
+        default: TO_DO
     },
     boardId: {
         type: String,
