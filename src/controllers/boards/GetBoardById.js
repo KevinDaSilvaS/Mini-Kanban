@@ -5,11 +5,11 @@ const {Boards} = require('../../operations');
 const execute = async (req, res) => {
     try {
         const {boardId} = req.params;
-        const board = await Boards.get({_id: boardId});
+        const {title, description} = await Boards.get({_id: boardId});
 
-        if(!board) response(res, Status.NOT_FOUND, "Board not found.");
+        if(!title) response(res, Status.NOT_FOUND, "Board not found.");
 
-        response(res, Status.OK, board);
+        response(res, Status.OK, {title, description});
     } catch (error) {
         response(res, Status.INTERNAL_SERVER_ERROR, error);
     }
