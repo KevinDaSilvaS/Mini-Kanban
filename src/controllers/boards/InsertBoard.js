@@ -7,9 +7,9 @@ const execute = async (req, res) => {
         const {_id, title, description} = await Boards.insert(req.body);
         const insertedBoard = {boardId: _id, title, description};
         response(res, Status.CREATED, insertedBoard);
-        
+
     } catch (error) {
-        response(res, Status.CREATED, error);
+        response(res, Status.INTERNAL_SERVER_ERROR, error);
     }
 }
 
