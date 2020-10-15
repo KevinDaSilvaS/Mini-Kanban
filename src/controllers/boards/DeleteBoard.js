@@ -7,7 +7,7 @@ const execute = async (req, res) => {
     try {
         const {boardId} = req.params;
         const {n} = await Boards.delete({_id: boardId});
-        if(n <= 0 || !n) response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
+        if(!n || n <= 0) response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
 
         response(res, Status.NO_CONTENT, undefined);
     } catch (error) {
