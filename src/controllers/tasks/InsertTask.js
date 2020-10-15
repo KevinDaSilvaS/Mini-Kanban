@@ -5,7 +5,6 @@ const {Tasks} = require('../../operations');
 
 const execute = async (req, res) => {
     
-
     try {
         const paramsBoardId = req.params.boardId;
 
