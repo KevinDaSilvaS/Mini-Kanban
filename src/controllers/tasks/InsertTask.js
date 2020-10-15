@@ -9,7 +9,7 @@ const execute = async (req, res) => {
     try {
         const paramsBoardId = req.params.boardId;
 
-        const data = await axios.get(`http://localhost:1747/boards/${paramsBoardId}`);
+        await axios.get(`http://localhost:1747/boards/${paramsBoardId}`);
 
         const {_id, title, description, boardId, status} = await Tasks.insert({
             ...req.body, boardId: paramsBoardId});
