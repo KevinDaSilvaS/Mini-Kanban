@@ -8,7 +8,7 @@ const execute = async (req, res) => {
         const {boardId} = req.params;
         const {title, description} = await Boards.get({_id: boardId});
 
-        if(!title) response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
+        if(!title) return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
 
         response(res, Status.OK, {title, description});
     } catch (error) {
