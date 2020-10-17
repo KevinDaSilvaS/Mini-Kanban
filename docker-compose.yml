@@ -1,0 +1,41 @@
+version: '3.3'
+
+services: 
+    mongo:
+        image: mongo
+        environment: 
+            - MONGO_INITDB_ROOT_USERNAME=kevindasilva
+            - MONGO_INITDB_ROOT_PASSWORD=123
+        ports: 
+            - "27017:27017"
+        volumes: 
+            - ./.docker/mongodb/mongod.conf:/etc/mongod.conf
+            - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+            - ./.docker/mongodb/data/db/:/data/db/
+            - ./.docker/mongodb/data/log/:/var/log/mongodb/
+        networks:
+            - mongo-compose-network
+
+    kanbanapp:
+        image: kanban-app
+        #build: 
+            #context: .
+        ports: 
+            - "1747:1747"
+        links:
+            - mongo
+        depends_on: 
+            - mongo
+        networks:
+            - mongo-compose-network
+
+    docs:
+        image: docs
+        build: 
+            context: ./collections
+        ports: 
+            - "5000:5000"
+
+networks: 
+    mongo-compose-network:
+        driver: bridge
