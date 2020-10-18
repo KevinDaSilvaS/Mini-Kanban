@@ -11,7 +11,7 @@ docker-compose up
 ```
 
 ```
-var s = "JavaScript syntax highlighting";
+var s = "docker-compose up";
 alert(s);
 ```
 
