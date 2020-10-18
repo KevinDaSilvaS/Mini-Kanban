@@ -14,6 +14,7 @@ Kanban microservice created using node js, MongoDB, express and docker
 <p>To acess the application</p>
 
 ```
+//routes: boards, tasks
 "http://localhost:1747/${route}"
 ```
 
