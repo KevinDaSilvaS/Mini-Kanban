@@ -11,8 +11,8 @@ docker-compose up
 ```
 
 <p>To acess the application</p>
-```
-http://localhost:1747/${route}
+```javascript
+  http://localhost:1747/${route}
 ```
 
 <p>To acess the documentation</p>
