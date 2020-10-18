@@ -11,8 +11,7 @@ docker-compose up
 ```
 
 ```
-var s = "docker-compose up";
-alert(s);
+"docker-compose up"
 ```
 
 <p>To acess the application</p>
