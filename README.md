@@ -18,11 +18,8 @@ Kanban microservice created using node js, MongoDB, express and docker
 ```
 
 <p>To acess the documentation</p>
+
 ```
 http://localhost:5000/
 ```
 
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-```
