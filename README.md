@@ -9,8 +9,10 @@ Kanban microservice created using node js, MongoDB, express and docker
 ```
 docker-compose up
 ```
+
 ```javascript
-"docker-compose up"
+var s = "JavaScript syntax highlighting";
+alert(s);
 ```
 
 <p>To acess the application</p>
