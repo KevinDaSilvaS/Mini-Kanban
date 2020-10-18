@@ -19,3 +19,8 @@ http://localhost:1747/${route}
 ```
 http://localhost:5000/
 ```
+
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
