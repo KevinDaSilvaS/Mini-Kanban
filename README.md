@@ -24,3 +24,5 @@ Kanban microservice created using node js, MongoDB, express and docker
 http://localhost:5000/
 ```
 
+[Link to access the front-end repository](https://github.com/KevinDaSilvaS/mini-kanban-front-end "Google's Homepage")
+
