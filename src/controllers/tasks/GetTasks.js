@@ -7,8 +7,8 @@ const execute = async (req, res) => {
         const {boardId} = req.params;
         let tasks = await Tasks.getAll({boardId});
         tasks = tasks.map((task) => {
-            const {_id, title, description, status} = task;
-            return {taskId: _id, title, description, status};
+            const {_id, title, description, status, boardId} = task;
+            return {taskId: _id, title, description, status, boardId};
         });
 
         response(res, Status.OK, tasks);
