@@ -8,7 +8,7 @@ Kanban microservice created using node js, MongoDB, express and docker
 <p>Start docker and run the following command in your terminal</p>
 
 ```
-"docker-compose up"
+"docker-compose up -d --build"
 ```
 
 <p>To acess the application</p>
