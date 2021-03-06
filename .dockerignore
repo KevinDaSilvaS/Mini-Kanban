@@ -1,2 +1,6 @@
 node_modules
 .docker
+collections
+docker-compose.yml
+Dockerfile
+.dockerignore
