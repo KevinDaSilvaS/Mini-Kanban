@@ -28,6 +28,10 @@ class OperationsBaseMongo extends BaseOperations {
     async delete(query) {
         return await this.model.deleteMany(query);
     }
+
+    async getPaginated(query, page=1, limit=10) {
+        return await this.model.find(query).skip((page-1)*limit).limit(limit);
+    }
 }
 
 module.exports = OperationsBaseMongo;
