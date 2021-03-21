@@ -30,7 +30,7 @@ class OperationsBaseMongo extends BaseOperations {
     }
 
     async getPaginated(query, page=1, limit=10) {
-        return await this.model.find(query).skip((page-1)*limit).limit(limit);
+        return await this.model.find(query).skip((page-1)*limit).limit(parseInt(limit));
     }
 }
 
