@@ -4,7 +4,8 @@ const {Boards} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
-        let boards = await Boards.getAll({});
+        const {page, limit} = req.query;
+        let boards = await Boards.getPaginated({}, page, limit);
         boards = boards.map((board) => {
             const {_id, title, description} = board;
             return {boardId: _id, title, description};
