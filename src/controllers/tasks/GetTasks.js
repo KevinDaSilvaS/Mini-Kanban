@@ -4,8 +4,10 @@ const {Tasks} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
+        const {page, limit} = req.query;
         const {boardId} = req.params;
-        let tasks = await Tasks.getAll({boardId});
+
+        let tasks = await Tasks.getPaginated({boardId}, page, limit);
         tasks = tasks.map((task) => {
             const {_id, title, description, status, boardId} = task;
             return {taskId: _id, title, description, status, boardId};
