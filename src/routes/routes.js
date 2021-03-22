@@ -42,7 +42,9 @@ const routes = [
     //tasks
     {
         route: '/tasks/:boardId',
-        validations: {},
+        validations: {
+            query: validations.getAllQuery
+        },
         controller: controllers.GetTasks, 
         method: 'GET'
     },
