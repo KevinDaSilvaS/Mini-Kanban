@@ -5,8 +5,8 @@ const {Boards} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
-        const {boardId} = req.params;
-        const {title, description} = await Boards.get({_id: boardId});
+        const { boardId } = req.params;
+        const { title, description } = await Boards.get({ _id: boardId });
 
         if(!title) return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
 

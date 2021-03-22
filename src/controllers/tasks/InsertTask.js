@@ -17,10 +17,10 @@ const execute = async (req, res) => {
             return;
         }
 
-        const {_id, title, description, boardId, status} = await Tasks.insert({
-            ...req.body, boardId: paramsBoardId});
+        const { _id, title, description, boardId, status } = await Tasks.insert({
+            ...req.body, boardId: paramsBoardId });
 
-        const insertedTask = {taskId: _id, title, description, boardId, status};
+        const insertedTask = { taskId: _id, title, description, boardId, status };
         response(res, Status.CREATED, insertedTask);
 
     } catch (error) {

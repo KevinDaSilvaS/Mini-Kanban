@@ -8,8 +8,8 @@ const execute = async (req, res) => {
         const {taskId} = req.params;
         const paramsBoardId = req.params.boardId;
 
-        const {title, description, status, boardId} = await Tasks.get({
-            _id: taskId, boardId: paramsBoardId});
+        const { title, description, status, boardId } = await Tasks.get({
+            _id: taskId, boardId: paramsBoardId });
 
         if(!title) return response(res, Status.NOT_FOUND, TASK_NOT_FOUND);
 

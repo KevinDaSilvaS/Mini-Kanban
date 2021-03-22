@@ -5,8 +5,9 @@ const {Boards} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
-        const {boardId} = req.params;
-        if(await Boards.update({_id: boardId} ,req.body)) {
+        const { boardId } = req.params;
+
+        if(await Boards.update({ _id: boardId } ,req.body)) {
             return response(res, Status.NO_CONTENT, undefined);
         }
 
