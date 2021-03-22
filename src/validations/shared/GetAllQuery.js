@@ -1,4 +1,4 @@
-const {getAllQuery} = require('../../schemas/shared/SharedSchema');
+const {getAllQuery} = require('../../schemas/');
 const Status = require('../../constants/HttpCodes');
 const response = require('../../app/response');
 

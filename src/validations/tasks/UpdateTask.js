@@ -1,4 +1,4 @@
-const {taskPatchBody} = require('../../schemas/tasks/TaskSchema');
+const {taskPatchBody} = require('../../schemas/');
 const Status = require('../../constants/HttpCodes');
 const response = require('../../app/response');
 

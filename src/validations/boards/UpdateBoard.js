@@ -1,4 +1,4 @@
-const {boardPatchBody} = require('../../schemas/boards/BoardSchema');
+const {boardPatchBody} = require('../../schemas/');
 const Status = require('../../constants/HttpCodes');
 const response = require('../../app/response');
 
