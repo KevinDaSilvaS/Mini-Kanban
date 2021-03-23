@@ -18,11 +18,19 @@ class OperationsBaseMongo extends BaseOperations {
     }
 
     async get(query) {
-        return await this.model.findOne(query);
+        try {
+            return await this.model.findOne(query);
+        } catch (error) {
+            return {};
+        }
     }
 
     async getAll(query) {
-        return await this.model.find(query);
+        try {
+            return await this.model.find(query);
+        } catch (error) {
+            return {};
+        }
     }
 
     async delete(query) {
@@ -30,7 +38,11 @@ class OperationsBaseMongo extends BaseOperations {
     }
 
     async getPaginated(query, page=1, limit=10) {
-        return await this.model.find(query).skip((page-1)*limit).limit(parseInt(limit));
+        try {
+            return await this.model.find(query).skip((page-1)*limit).limit(parseInt(limit));
+        } catch (error) {
+            return {};
+        }
     }
 }
 
