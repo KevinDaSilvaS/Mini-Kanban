@@ -4,8 +4,9 @@ const {Boards} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
-        const {_id, title, description} = await Boards.insert(req.body);
-        const insertedBoard = {boardId: _id, title, description};
+        const { _id, title, description } = await Boards.insert(req.body);
+        
+        const insertedBoard = { boardId: _id, title, description };
         response(res, Status.CREATED, insertedBoard);
 
     } catch (error) {

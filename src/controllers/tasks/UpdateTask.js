@@ -5,8 +5,8 @@ const {Tasks} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
-        const {taskId} = req.params;
-        if(await Tasks.update({_id: taskId} ,req.body)) {
+        const { taskId } = req.params;
+        if(await Tasks.update({ _id: taskId } ,req.body)) {
             return response(res, Status.NO_CONTENT, undefined);
         }
 

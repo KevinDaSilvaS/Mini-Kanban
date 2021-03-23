@@ -5,7 +5,9 @@ const routes = [
     //boards
     {
         route: '/boards',
-        validations: {},
+        validations: {
+            query: validations.getAllQuery
+        },
         controller: controllers.GetBoards, 
         method: 'GET'
     },
@@ -40,7 +42,9 @@ const routes = [
     //tasks
     {
         route: '/tasks/:boardId',
-        validations: {},
+        validations: {
+            query: validations.getAllQuery
+        },
         controller: controllers.GetTasks, 
         method: 'GET'
     },

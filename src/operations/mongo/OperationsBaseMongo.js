@@ -18,15 +18,31 @@ class OperationsBaseMongo extends BaseOperations {
     }
 
     async get(query) {
-        return await this.model.findOne(query);
+        try {
+            return await this.model.findOne(query);
+        } catch (error) {
+            return {};
+        }
     }
 
     async getAll(query) {
-        return await this.model.find(query);
+        try {
+            return await this.model.find(query);
+        } catch (error) {
+            return {};
+        }
     }
 
     async delete(query) {
         return await this.model.deleteMany(query);
+    }
+
+    async getPaginated(query, page=1, limit=10) {
+        try {
+            return await this.model.find(query).skip((page-1)*limit).limit(parseInt(limit));
+        } catch (error) {
+            return {};
+        }
     }
 }
 

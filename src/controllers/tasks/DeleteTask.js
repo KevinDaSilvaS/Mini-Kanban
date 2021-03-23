@@ -5,8 +5,9 @@ const {Tasks} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
-        const {taskId} = req.params;
-        const {n} = await Tasks.delete({_id: taskId});
+        const { taskId } = req.params;
+
+        const {n} = await Tasks.delete({ _id: taskId });
         if(!n || n <= 0) response(res, Status.NOT_FOUND, TASK_NOT_FOUND);
 
         response(res, Status.NO_CONTENT, undefined);
