@@ -1,11 +1,16 @@
 const response = require('../../app/response');
 const Status = require('../../constants/HttpCodes');
-const {Tasks} = require('../../operations');
+const {Tasks, Boards} = require('../../operations');
 
 const execute = async (req, res) => {
     try {
         const { page, limit } = req.query;
         const { boardId } = req.params;
+
+        const board = await Boards.get({ _id: boardId });
+
+        if(!board.title)
+            throw BOARD_NOT_FOUND;
 
         let tasks = await Tasks.getPaginated({ boardId }, page, limit);
 
