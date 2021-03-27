@@ -35,5 +35,7 @@ networks:
   kanban:
       driver: overlay
       name: kanban 
+      # if your are not using kanban gateway to deploy the application
+      # just comment the last two lines of this docker-compose file ..
       external: 
         name: kanban
