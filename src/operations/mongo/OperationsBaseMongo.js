@@ -7,26 +7,27 @@ class OperationsBaseMongo extends BaseOperations {
     }
 
     async insert(data) {
-        const concrete = new this.model(data);
-        return await concrete.save();
+        try {
+            const concrete = new this.model(data);
+            return await concrete.save();
+        } catch (error) {
+            return error;
+        }
     }
 
     async update(query, replace) {
         try {
             return await this.model.updateMany(query, replace);
-        if(updatedRegister.ok > 0) return true;
         } catch (error) {
-            return {};
+            return error;
         }
-        
-        return false;
     }
 
     async get(query) {
         try {
             return await this.model.findOne(query);
         } catch (error) {
-            return {};
+            return error;
         }
     }
 
@@ -34,19 +35,23 @@ class OperationsBaseMongo extends BaseOperations {
         try {
             return await this.model.find(query);
         } catch (error) {
-            return {};
+            return error;
         }
     }
 
     async delete(query) {
-        return await this.model.deleteMany(query);
+        try {
+            return await this.model.deleteMany(query);
+        } catch (error) {
+            return error;
+        }
     }
 
     async getPaginated(query, page=1, limit=10) {
         try {
             return await this.model.find(query).skip((page-1)*limit).limit(parseInt(limit));
         } catch (error) {
-            return {};
+            return error;
         }
     }
 }

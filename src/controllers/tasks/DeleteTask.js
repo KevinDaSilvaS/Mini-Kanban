@@ -8,11 +8,13 @@ const execute = async (req, res) => {
         const { taskId } = req.params;
 
         const {n} = await Tasks.delete({ _id: taskId });
-        if(!n || n <= 0) response(res, Status.NOT_FOUND, TASK_NOT_FOUND);
+        if(!n || n <= 0) {
+            return response(res, Status.NOT_FOUND, TASK_NOT_FOUND);
+        }
 
-        response(res, Status.NO_CONTENT, undefined);
+        return response(res, Status.NO_CONTENT, undefined);
     } catch (error) {
-        response(res, Status.INTERNAL_SERVER_ERROR, error);
+        return response(res, Status.INTERNAL_SERVER_ERROR, error);
     }
 }
 

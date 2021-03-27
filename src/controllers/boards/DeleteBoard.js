@@ -9,11 +9,13 @@ const execute = async (req, res) => {
         await Tasks.delete({ boardId });
 
         const {n} = await Boards.delete({ _id: boardId });
-        if(!n || n <= 0) response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
+        if(!n || n <= 0) {
+            return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
+        }
 
-        response(res, Status.NO_CONTENT, undefined);
+        return response(res, Status.NO_CONTENT, undefined);
     } catch (error) {
-        response(res, Status.INTERNAL_SERVER_ERROR, error);
+        return response(res, Status.INTERNAL_SERVER_ERROR, error);
     }
 }
 
