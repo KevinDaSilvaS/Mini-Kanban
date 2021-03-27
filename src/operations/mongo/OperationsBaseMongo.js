@@ -14,12 +14,9 @@ class OperationsBaseMongo extends BaseOperations {
     async update(query, replace) {
         try {
             return await this.model.updateMany(query, replace);
-        if(updatedRegister.ok > 0) return true;
         } catch (error) {
-            return {};
+            return error;
         }
-        
-        return false;
     }
 
     async get(query) {
