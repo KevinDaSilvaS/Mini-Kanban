@@ -1,5 +1,6 @@
 const response = require('../../app/response');
 const Status = require('../../constants/HttpCodes');
+const {BOARD_NOT_FOUND} = require('../../constants/ErrorMessages');
 const {Tasks, Boards} = require('../../operations');
 
 const execute = async (req, res) => {
@@ -10,7 +11,7 @@ const execute = async (req, res) => {
         const board = await Boards.get({ _id: boardId });
 
         if(!board.title)
-            throw BOARD_NOT_FOUND;
+            return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
 
         let tasks = await Tasks.getPaginated({ boardId }, page, limit);
 
@@ -24,7 +25,7 @@ const execute = async (req, res) => {
             return { taskId: _id, title, description, status, boardId };
         });
 
-        response(res, Status.OK, tasks);
+        return response(res, Status.OK, tasks);
         
     } catch (error) {
         response(res, Status.INTERNAL_SERVER_ERROR, error);
