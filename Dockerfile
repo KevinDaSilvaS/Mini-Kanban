@@ -5,7 +5,7 @@ EXPOSE 1747
 COPY ./ .
 COPY ./.env ./src
 
-RUN npm i
+RUN npm i -D
 
 WORKDIR /src/
 
