@@ -2,10 +2,12 @@ const GetMethod = require('./GetMethod');
 const PostMethod = require('./PostMethod');
 const PatchMethod = require('./PatchMethod');
 const DeleteMethod = require('./DeleteMethod');
+const BuildBase = require('./BuildBase');
 
 module.exports = {
-    GET: new GetMethod().getRoute,
-    POST: new PostMethod().getRoute,
-    PATCH: new PatchMethod().getRoute,
-    DELETE: new DeleteMethod().getRoute
+    GET: GetMethod,
+    POST: PostMethod,
+    PATCH: PatchMethod,
+    DELETE: DeleteMethod,
+    BuildBase
 }
