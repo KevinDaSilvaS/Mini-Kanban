@@ -23,3 +23,10 @@ test('Should fail validations because of forbidden data', () => {
         title: "board name"
     }}, res)).toEqual(false);
 });
+
+test('Should fail validations because of non string fields', () => {
+    expect(updateBoard({body: {
+        title: 123,
+        description : 123,
+    }}, res)).toEqual(false);
+});

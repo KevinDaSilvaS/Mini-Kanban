@@ -34,3 +34,11 @@ test('Should fail validations because of non valid status', () => {
     expect(insertTask({body: {title: 'new Board',
     status: 'Another_Status'}}, res)).toEqual(false);
 });
+
+test('Should fail validations because of non string fields', () => {
+    expect(insertTask({body: {
+        title: 123,
+        description : 123,
+        status: TO_DO
+    }}, res)).toEqual(false);
+});

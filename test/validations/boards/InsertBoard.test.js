@@ -27,3 +27,10 @@ test('Should fail validations because of forbidden data', () => {
 test('Should fail validations because of missing required fields', () => {
     expect(insertBoard({body: {}}, res)).toEqual(false);
 });
+
+test('Should fail validations because of non string fields', () => {
+    expect(insertBoard({body: {
+        title: 123,
+        description : 123,
+    }}, res)).toEqual(false);
+});
