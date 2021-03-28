@@ -7,7 +7,7 @@ const routes = app._router.stack
     const { path, stack } = routeObject.route;
     const [ method ] = stack.map(layer => layer.method);
     return { path, method };
-})
+});
 
 test('Should assert all routes and methods on microservice', () => {
     expect(routes).toEqual([
