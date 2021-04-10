@@ -10,7 +10,7 @@ const execute = async (req, res, dependencies) => {
 
         const board = await Boards.get({ _id: boardId });
 
-        if(!board.title)
+        if(!board || !board.title)
             return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
 
         let tasks = await Tasks.getPaginated({ boardId }, page, limit);
