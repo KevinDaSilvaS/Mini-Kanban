@@ -1,9 +1,8 @@
-const response = require('../../app/response');
-const Status = require('../../constants/HttpCodes');
-const {BOARD_NOT_FOUND} = require('../../constants/ErrorMessages');
-const {Boards, Tasks} = require('../../operations');
+const execute = async (req, res, dependencies) => {
+    const { response, Status, ErrorMessages, Operations } = dependencies;
+    const { Boards, Tasks } = Operations;
+    const { BOARD_NOT_FOUND } = ErrorMessages;
 
-const execute = async (req, res) => {
     try {
         const { boardId } = req.params;
         await Tasks.delete({ boardId });

@@ -1,8 +1,7 @@
-const response = require('../../app/response');
-const Status = require('../../constants/HttpCodes');
-const {Boards} = require('../../operations');
+const execute = async (req, res, dependencies) => {
+    const { response, Status, Operations } = dependencies;
+    const { Boards } = Operations;
 
-const execute = async (req, res) => {
     try {
         const { _id, title, description } = await Boards.insert(req.body);
         

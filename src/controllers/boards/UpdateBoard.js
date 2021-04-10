@@ -1,9 +1,8 @@
-const response = require('../../app/response');
-const Status = require('../../constants/HttpCodes');
-const {ERROR_UPDATE_BOARD} = require('../../constants/ErrorMessages');
-const {Boards} = require('../../operations');
+const execute = async (req, res, dependencies) => {
+    const { response, Status, ErrorMessages, Operations } = dependencies;
+    const { Boards } = Operations;
+    const { ERROR_UPDATE_BOARD } = ErrorMessages;
 
-const execute = async (req, res) => {
     try {
         const { boardId } = req.params;
 

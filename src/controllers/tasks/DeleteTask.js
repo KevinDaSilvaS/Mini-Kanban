@@ -1,9 +1,9 @@
-const response = require('../../app/response');
-const Status = require('../../constants/HttpCodes');
-const {TASK_NOT_FOUND} = require('../../constants/ErrorMessages');
-const {Tasks} = require('../../operations');
 
-const execute = async (req, res) => {
+const execute = async (req, res, dependencies) => {
+    const { response, Status, ErrorMessages, Operations } = dependencies;
+    const { Tasks } = Operations;
+    const { TASK_NOT_FOUND } = ErrorMessages;
+    
     try {
         const { taskId } = req.params;
 
