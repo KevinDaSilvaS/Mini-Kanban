@@ -1,22 +1,23 @@
-const response = require('../../app/response');
-const Status = require('../../constants/HttpCodes');
-const {TASK_NOT_FOUND, BOARD_NOT_FOUND} = require('../../constants/ErrorMessages');
-const {Boards, Tasks} = require('../../operations');
+const execute = async (req, res, dependencies) => {
+    const { response, Status, ErrorMessages, Operations } = dependencies;
+    const { Boards, Tasks } = Operations;
+    const { TASK_NOT_FOUND, BOARD_NOT_FOUND } = ErrorMessages;
 
-const execute = async (req, res) => {
     try {
         const {taskId} = req.params;
         const paramsBoardId = req.params.boardId;
 
         const board = await Boards.get({ _id: paramsBoardId });
 
-        if(!board.title)
+        if(!board)
             return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
 
-        const { title, description, status, boardId } = await Tasks.get({
+        const task = await Tasks.get({
             _id: taskId, boardId: paramsBoardId });
 
-        if(!title) return response(res, Status.NOT_FOUND, TASK_NOT_FOUND);
+        if(!task) return response(res, Status.NOT_FOUND, TASK_NOT_FOUND);
+
+        const { title, description, status, boardId } = task;
 
         return response(res, Status.OK, {title, description, status, boardId});
     } catch (error) {
