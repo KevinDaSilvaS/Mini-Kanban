@@ -9,7 +9,7 @@ const execute = async (req, res, dependencies) => {
         
         const board = await Boards.get({ _id: paramsBoardId });
 
-        if(!board.title)
+        if(!board || !board.title)
             throw BOARD_NOT_FOUND;
 
         const { _id, title, description, boardId, status } = await Tasks.insert({
