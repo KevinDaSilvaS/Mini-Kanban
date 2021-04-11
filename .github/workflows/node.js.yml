@@ -28,9 +28,3 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - name: Check test coverage
-      id: test-coverage
-      uses: johanvanhelden/gha-clover-test-coverage-check@v1
-      with:
-        percentage: "80"
-        filename: ".github/coverage.xml"
