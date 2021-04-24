@@ -14,6 +14,10 @@ services:
 
     kanbanapp:
         image: kanban-app
+        environment: 
+            - MONGO_USER=${MONGO_USER}
+            - MONGO_PASSWORD=${MONGO_PASSWORD}
+            - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
         build: 
             context: .
         ports: 
@@ -31,16 +35,16 @@ services:
         ports: 
             - "${DOCS_PORT}:5000"
         networks:
-            - kanban
+            #- kanban
             - kanban_app
 networks:
   kanban_app:
       driver: bridge
       name: kanban_app 
+# if your are not using kanban gateway to deploy the application
+# just comment all the kanban network references in this docker-compose file ..
   kanban:
       driver: overlay
       name: kanban 
-      # if your are not using kanban gateway to deploy the application
-      # just comment the last two lines of this docker-compose file ..
       external: 
         name: kanban
