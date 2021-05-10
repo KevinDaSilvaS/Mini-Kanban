@@ -45,6 +45,5 @@ networks:
 # just comment all the kanban network references in this docker-compose file ..
   kanban:
       driver: overlay
-      name: kanban 
       external: 
-        name: kanban
+        name: eg-gateway_kanban
