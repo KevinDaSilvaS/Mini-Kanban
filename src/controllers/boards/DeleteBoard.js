@@ -20,9 +20,12 @@ const execute = async (req, res, dependencies) => {
             return response(res, Status.NOT_FOUND, BOARD_NOT_FOUND);
         }
 
+        if(!channel.publish) 
+            dependencies.channel = await AmqpBroker.connection();
+        
         const {exchanges, queues} = BrokerInfo;
         await AmqpBroker.publish(
-            channel, 
+            dependencies.channel, 
             exchanges.topic_mini_kanban.exchange,
             queues.delete_all_comments_when_task_or_board_is_deleted,
             JSON.stringify({ boardId })
