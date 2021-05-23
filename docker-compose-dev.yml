@@ -12,6 +12,15 @@ services:
         networks:
             - kanban_app
 
+    rabbit-mq:
+        image: rabbitmq:3-management
+        hostname: some-rabbit
+        ports: 
+            - "15672:15672"
+            - "5672:5672"
+        networks:
+            - kanban_app
+
     docs:
         image: docs
         build: 
