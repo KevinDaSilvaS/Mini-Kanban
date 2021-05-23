@@ -1,7 +1,9 @@
 const amqp = require('amqplib');
+require('dotenv/config');
 const { exchanges } = require('./BrokerInfo');
+const { RABBIT_HOST } = process.env;
 
-const connect = (url = 'amqp://localhost') => {
+const connect = (url = `amqp://${RABBIT_HOST}`) => {
   return new Promise((resolve, reject) => {
     amqp.connect(url)
       .then(conn => resolve(conn))
