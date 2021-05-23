@@ -12,7 +12,7 @@ const dependencies = {
         }
     },
     AmqpBroker: {
-        publish: () => {}
+        publish: jest.fn()
     },
     BrokerInfo: {
         exchanges: {
@@ -23,6 +23,9 @@ const dependencies = {
         queues: {
             delete_all_comments_when_task_or_board_is_deleted: 'queue_name'
         }
+    },
+    channel: {
+        publish: () => {}
     }
 }
 
