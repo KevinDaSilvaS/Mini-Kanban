@@ -10,6 +10,19 @@ const dependencies = {
         Tasks: {
             delete: jest.fn(() => ({n:3}))
         }
+    },
+    AmqpBroker: {
+        publish: () => {}
+    },
+    BrokerInfo: {
+        exchanges: {
+            topic_mini_kanban: {
+                exchange: 'exchange_name'
+            }
+        },
+        queues: {
+            delete_all_comments_when_task_or_board_is_deleted: 'queue_name'
+        }
     }
 }
 
