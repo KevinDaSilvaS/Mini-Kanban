@@ -2,15 +2,21 @@ const response = require('../response');
 const Status = require('../../constants/HttpCodes');
 const ErrorMessages = require('../../constants/ErrorMessages');
 const Operations = require('../../operations');
+const AmqpBroker = require('../../operations/rabbit-mq/RabbitMqOperations');
+const BrokerInfo = require('../../operations/rabbit-mq/BrokerInfo');
 
 const dependencies = {
     response,
     Status,
     ErrorMessages,
-    Operations
+    Operations,
+    AmqpBroker,
+    BrokerInfo
 }
 
 const buildBase = async (route, req, res) => {
+    dependencies.channel = await AmqpBroker.connection();
+    
     const values = Object.values(route.validations);
     for (let i = 0; i < values.length; i++) {
         const result = await values[i](req, res);
