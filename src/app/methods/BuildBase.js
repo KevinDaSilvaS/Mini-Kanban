@@ -11,12 +11,11 @@ const dependencies = {
     ErrorMessages,
     Operations,
     AmqpBroker,
-    BrokerInfo
+    BrokerInfo,
+    channel: AmqpBroker.connection()
 }
 
 const buildBase = async (route, req, res) => {
-    dependencies.channel = await AmqpBroker.connection();
-    
     const values = Object.values(route.validations);
     for (let i = 0; i < values.length; i++) {
         const result = await values[i](req, res);
