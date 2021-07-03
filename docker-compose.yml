@@ -47,4 +47,4 @@ networks:
   kanban:
       driver: overlay
       external: 
-        name: eg-gateway_kanban
+        name: krakend-gateway_kanban
